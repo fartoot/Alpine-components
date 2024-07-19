@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>AlpineJS Components</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100">
+    <div class="grid grid-cols-3 gap-6 p-5">
+        <!-- password visibility -->
+        <div x-data="{ isShow : false }"
+            class="bg-white p-5 min-h-60 rounded-md shadow-lg flex justify-center items-center">
+            <div class="relative">
+                <input class="border-2 rounded-md p-2 block h-12 pe-10 w-full" :type="isShow ? 'text' : 'password'"
+                    placeholder="Enter your password" />
+                <button @click="isShow=!isShow" class="absolute inset-y-0 right-3">
+                    <svg class="h-6 stroke-gray-400 hover:stroke-gray-500" x-show="isShow === true" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg class="h-6 stroke-gray-400 hover:stroke-gray-500" x-show="isShow === false" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M2.99902 3L20.999 21M9.8433 9.91364C9.32066 10.4536 8.99902 11.1892 8.99902 12C8.99902 13.6569 10.3422 15 11.999 15C12.8215 15 13.5667 14.669 14.1086 14.133M6.49902 6.64715C4.59972 7.90034 3.15305 9.78394 2.45703 12C3.73128 16.0571 7.52159 19 11.9992 19C13.9881 19 15.8414 18.4194 17.3988 17.4184M10.999 5.04939C11.328 5.01673 11.6617 5 11.9992 5C16.4769 5 20.2672 7.94291 21.5414 12C21.2607 12.894 20.8577 13.7338 20.3522 14.5"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-white p-5 min-h-60 rounded-md shadow-lg space-y-4">
+            <div x-data="{ isOpen : false}" class="w-full pb-4 border-b-2">
+                <button x-on:click="isOpen = !isOpen" class="flex items-center">
+                    <svg x-show="!isOpen" class="h-8 me-2 fill-gray-400 hover:fill-gray-500" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" />
+                    </svg>
+                    <svg x-show="isOpen" class="h-8 me-2 fill-gray-400 hover:fill-gray-500" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" />
+                    </svg>
+                    <p class="text-lg font-semibold tracking-wide text-gray-700">
+                        Question 1 : why html is not a language?
+                    </p>
+                </button>
+                <div x-show="isOpen" x-transition.duration.500ms.origin.top class="my-3 leading-6 px-3">
+                    <p>
+                        because Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Exercitationem assumenda voluptatibus voluptatum, at ad, quidem
+                        eligendi quia culpa nobis architecto non enim iusto quos fugiat ab
+                        odit repellat, quas hic!
+                    </p>
+                </div>
+            </div>
+            <div x-data="{ isOpen : false}" class="w-full pb-4 border-b-2">
+                <button x-on:click="isOpen = !isOpen" class="flex items-center">
+                    <svg x-show="!isOpen" class="h-8 me-2 fill-gray-400 hover:fill-gray-500" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" />
+                    </svg>
+                    <svg x-show="isOpen" class="h-8 me-2 fill-gray-400 hover:fill-gray-500" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" />
+                    </svg>
+                    <p class="text-lg font-semibold tracking-wide text-gray-700">
+                        Question 2 : why css is not a language?
+                    </p>
+                </button>
+                <div x-show="isOpen" x-transition.duration.500ms.origin.top class="my-3 leading-6 px-3">
+                    <p>
+                        because Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Exercitationem assumenda voluptatibus voluptatum, at ad, quidem
+                        eligendi quia culpa nobis architecto non enim iusto quos fugiat ab
+                        odit repellat, quas hic!
+                    </p>
+                </div>
+            </div>
+            <div x-data="{ isOpen : false}" class="pb-4 border-b-2">
+                <button x-on:click="isOpen = !isOpen" class="flex items-center">
+                    <svg x-show="!isOpen" class="h-8 me-2 fill-gray-400 hover:fill-gray-500" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" />
+                    </svg>
+                    <svg x-show="isOpen" class="h-8 me-2 fill-gray-400 hover:fill-gray-500" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" />
+                    </svg>
+                    <p class="text-lg font-semibold tracking-wide text-gray-700">
+                        Question 3 : why js is a language?
+                    </p>
+                </button>
+                <div x-show="isOpen" x-transition.duration.500ms.origin.top class="my-3 leading-6 px-3">
+                    <p>
+                        because Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Exercitationem assumenda voluptatibus voluptatum, at ad, quidem
+                        eligendi quia culpa nobis architecto non enim iusto quos fugiat ab
+                        odit repellat, quas hic!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-5 min-h-60 rounded-md shadow-lg" x-data="{
+            faqs: [
+                {
+                    question: 'Question 1 : why html is not a language? ',
+                    answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores iure quas laudantium dicta impedit, est id delectus molestiae deleniti enim nobis rem et nihil.',
+                    isOpen: true,
+                },
+                {
+                    question: 'Question 2 : why css is not a language? ',
+                    answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+                    isOpen: true,
+                },
+                {
+                    question: 'Question 3 : why js is a language? ',
+                    answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+                    isOpen: true,
+                },
+            ]
+        }">
+            <template x-for="faq in faqs">
+                <div class="w-full pb-4 border-b-2 mb-4 mt-2">
+                    <button x-on:click="faq.isOpen = !faq.isOpen" class="flex items-center">
+                        <svg :class="{'-rotate-90' : !faq.isOpen}"
+                            class="h-8 me-2 fill-gray-400 transition duration-300 ease-in-out delay-100"
+                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" />
+                        </svg>
+                        <p x-text="faq.question" class="text-lg font-semibold tracking-wide text-gray-700"></p>
+                    </button>
+                    <div x-show="!faq.isOpen" x-transition.duration.500ms.origin.top x-transition:leave.duration.400ms
+                        class="my-3 leading-6 px-3">
+                        <p x-text="faq.answer" class="transtion"></p>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <div class="bg-white p-5 min-h-60 rounded-md shadow-lg flex justify-center items-center">
+            <div x-data="{quotes : [],count:0}"
+                x-init="fetch('https://type.fit/api/quotes').then(res => res.json()).then(res => quotes = res)"
+                class="flex flex-col justify-center items-center space-y-7">
+                <button @click="count = count <= 0 ? count : count - 1">
+                    <svg class="h-8 me-2 fill-gray-400 hover:fill-gray-500" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.2929 15.2893C18.6834 14.8988 18.6834 14.2656 18.2929 13.8751L13.4007 8.98766C12.6195 8.20726 11.3537 8.20757 10.5729 8.98835L5.68257 13.8787C5.29205 14.2692 5.29205 14.9024 5.68257 15.2929C6.0731 15.6835 6.70626 15.6835 7.09679 15.2929L11.2824 11.1073C11.673 10.7168 12.3061 10.7168 12.6966 11.1073L16.8787 15.2893C17.2692 15.6798 17.9024 15.6798 18.2929 15.2893Z" />
+                    </svg>
+                </button>
+                <div class="text-center">
+                    <p x-text="quotes[`${count}`].text" class="text-lg uppercase italic"></p>
+                    <p x-text="quotes[`${count}`].author" class="text-sm font-thin"></p>
+                </div>
+                <button @click="count++">
+                    <svg class="h-8 me-2 fill-gray-400 hover:fill-gray-500" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div x-data="{ todos : [], count : 0 }"
+            class="bg-white p-5 min-h-60 rounded-md shadow-lg flex items-center flex-col space-y-4">
+            <h2>Todo list :</h2>
+            <table class="border-separate border-spacing-y-4">
+                <tr>
+                    <td colspan="3">
+                        <input x-model="message"
+                            @keydown.enter="todos.push({ id:count++, todo:message, isComplete : false })" type="text"
+                            class="w-full h-10 px-2 rounded-md shadow-md border-2" placeholder="Enter todo" />
+                    </td>
+                </tr>
+                <template x-for="todo in todos">
+                    <tr>
+                        <td>
+                            <input @click="todo.isComplete = !todo.isComplete" class="accent-green-300"
+                                type="checkbox" />
+                        </td>
+                        <td>
+                            <p :class="{'line-through' : todo.isComplete} " x-text="todo.todo"></p>
+                        </td>
+                        <td class="text-right">
+                            <button @click="todos = todos.filter(item => item.id !== todo.id)"
+                                class="text-red-500 font-bold">
+                                x
+                            </button>
+                        </td>
+                    </tr>
+                </template>
+            </table>
+        </div>
+        <div class="bg-white p-5 min-h-60 rounded-md shadow-lg flex items-center justify-center">
+            <div x-data="{isToggle : false}">
+                <input @click="isToggle = !isToggle" type="checkbox" class="appearance-none" id="checkbox" />
+                <label for="checkbox">
+                    <div :class="{'bg-green-200' : isToggle}"
+                        class="w-32 h-12 bg-red-200 transition duration-200 flex items-center rounded-full shadow-inner">
+                        <div :class="isToggle ? 'translate-x-20' :'translate-x-0'"
+                            class="transition duration-300 ease-in-out mx-1 w-10 h-10 bg-white rounded-full shadow-sm">
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="bg-white p-3 min-h-60 rounded-md shadow-lg">
+            <div
+                x-data="{
+                    tabs: [{id : 0 ,title : 'Movies', content : 'Lorem ipsum dolor sit,'}, {id : 1 ,title : 'Sports', content : 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'},{id : 3 ,title : 'Health', content : 'Lorem ipsum dolor sit amet.'}], selectedTab : 0 }">
+                <template x-for="tab in tabs">
+                    <button class="py-3 px-5"
+                        :class="tab.id === selectedTab ? 'border-b-2 border-gray-600': 'border-b-2 border-gray-200 text-gray-400'"
+                        @click="selectedTab = tab.id" x-text="tab.title"></button>
+                </template>
+                <template x-for="tab in tabs">
+                    <div>
+                        <p  x-transition:enter.duration.500ms.origin.right x-show="tab.id == selectedTab" x-text="tab.content" class="p-3"></p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
